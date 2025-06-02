@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern blog about web development and design">
+    <title>My Blog | Web Development & Design</title>
+    
+    <!-- Tailwind CSS with Inter font -->
+    <link rel="stylesheet" href="{% static 'dist/output.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen antialiased">
+
+<!-- Navigation -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between py-4">
+            <a href="/" class="flex items-center space-x-2">
+                <span class="text-2xl font-bold gradient-text">MyBlog</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="text-gray-700 hover:text-blue-600 transition-all">Home</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-all">Categories</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-all">About</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-all">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <button class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all">
+                    Subscribe
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-4 py-8">
+    {% block content %}
+    <!-- Content will be injected here -->
+    {% endblock %}
+</main>
+
+<!-- Newsletter Section -->
+<section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="max-w-2xl mx-auto mb-8">Subscribe to our newsletter for the latest articles and resources.</p>
+        <div class="max-w-md mx-auto flex">
+            <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-900">
+            <button class="bg-gray-900 hover:bg-gray-800 px-6 py-3 rounded-r-lg font-medium transition-all">
+                Subscribe
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-gray-200">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">MyBlog</h3>
+                <p class="text-gray-600">Sharing knowledge about web development, design, and technology.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">Home</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">About</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">Blog</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">Web Development</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">UI/UX Design</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">JavaScript</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all">Python</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 text-xl transition-all"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 text-xl transition-all"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 text-xl transition-all"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 text-xl transition-all"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500">
+            <p>© 2025 MyBlog. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script defer>
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
